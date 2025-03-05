@@ -26,9 +26,9 @@ class Face {
 /**
  * Class that represents a pyraminx Rubik's Cube
  */
-public class PryamidRubik {
+public class PyramidRubik {
     private Face[] faces = new Face[4];
-    public PryamidRubik() {
+    public PyramidRubik() {
         InitializeFaces();
     }
     public Face[] getFaces() {

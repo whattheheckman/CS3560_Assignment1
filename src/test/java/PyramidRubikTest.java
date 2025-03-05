@@ -1,10 +1,10 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-public class PryamidRubikTest {
+public class PyramidRubikTest {
     @Test
     public void testIsValid() {
-       PryamidRubik test_cube = new PryamidRubik();
+       PyramidRubik test_cube = new PyramidRubik();
        assertTrue(test_cube.validateCube());
     }
 }
