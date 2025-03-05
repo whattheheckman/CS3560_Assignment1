@@ -21,9 +21,8 @@ class Face {
 }
 
 public class PryamidRubik {
-    private Face[] faces;
-    public PryamidRubik(Face[] faces) {
-        this.faces = faces;
+    private Face[] faces = new Face[4];
+    public PryamidRubik() {
         InitializeFaces();
     }
     public Face[] getFaces() {
@@ -42,6 +41,7 @@ public class PryamidRubik {
         }
     }
 
+    // validate each face by checking that each face has the same color
     public boolean validateFace(int face_index) {
         Face face_to_validate = faces[face_index];
         PieceColor previousColor = face_to_validate.getTiles()[0];
@@ -51,6 +51,7 @@ public class PryamidRubik {
         return true;
     }
 
+    // Validate each side individually, if one of the sides fails, then the whole cube fails
     public boolean validateCube() {
         for (int i = 0; i < faces.length; i++) {
             if (!validateFace(i)) {
@@ -60,6 +61,7 @@ public class PryamidRubik {
         return true;
     }
 
+    // each face needs a different color
     private void InitializeFaces() {
         faces[0] = new Face(PieceColor.Red);
         faces[1] = new Face(PieceColor.Green);
@@ -68,6 +70,3 @@ public class PryamidRubik {
     }
 }
 
-public static void main(String[] args){
-    System.out.println();
-}
