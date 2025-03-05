@@ -8,7 +8,9 @@ enum PieceType {Tip, Centre, Edge}
 // top center, left center, right center
 // top edge, left edge, right edge
 
-
+/**
+ *  Class for representing a face of a pryaminx Rubik's Cube
+ */
 class Face {
     private PieceColor[] tiles;
     public Face(PieceColor color) {
@@ -20,6 +22,10 @@ class Face {
     }
 }
 
+
+/**
+ * Class that represents a pyraminx Rubik's Cube
+ */
 public class PryamidRubik {
     private Face[] faces = new Face[4];
     public PryamidRubik() {
@@ -29,8 +35,15 @@ public class PryamidRubik {
         return faces;
     }
 
-    private PieceType getPieceType(int face_index) {
-        switch (face_index) {
+
+    /**
+    * Returns whether a piece is a tip, edge,
+    * or center piece based on its array index
+    * @param piece_index integer for which array index to inspect
+    * @return PieceType of Tip, Edge, or Centre
+    */
+    private PieceType getPieceType(int piece_index) {
+        switch (piece_index) {
             case 1, 5, 9:
                 return PieceType.Tip;
             case 2, 4, 7:
@@ -41,7 +54,11 @@ public class PryamidRubik {
         }
     }
 
-    // validate each face by checking that each face has the same color
+    /**
+     * Validate each face by checking that each face has the same color
+     * @param face_index which face to validate
+     * @return true is the face is all the same color, false if not
+     * */
     public boolean validateFace(int face_index) {
         Face face_to_validate = faces[face_index];
         PieceColor previousColor = face_to_validate.getTiles()[0];
@@ -51,7 +68,10 @@ public class PryamidRubik {
         return true;
     }
 
-    // Validate each side individually, if one of the sides fails, then the whole cube fails
+    /**
+     * Validate if  cube is solved by checking that each side is the same color. If one of the sides fails, then the whole cube fails
+     * @return true if the cube is solved, false if not
+     */
     public boolean validateCube() {
         for (int i = 0; i < faces.length; i++) {
             if (!validateFace(i)) {
@@ -61,7 +81,9 @@ public class PryamidRubik {
         return true;
     }
 
-    // each face needs a different color
+    /**
+     * Initalizes the cube to have different colored faces for each face
+     */
     private void InitializeFaces() {
         faces[0] = new Face(PieceColor.Red);
         faces[1] = new Face(PieceColor.Green);
